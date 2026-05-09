@@ -1,6 +1,6 @@
 package ru.mentee.power;
 
-// Ветка feature/DVT-3
+// Для PR
 public class ProgressDemo {
 
     public static void main(String[] args) {
