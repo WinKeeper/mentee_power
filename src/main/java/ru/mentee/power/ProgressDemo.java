@@ -1,6 +1,6 @@
 package ru.mentee.power;
 
-// Для PR
+// Для PR merge to base
 public class ProgressDemo {
 
     public static void main(String[] args) {
