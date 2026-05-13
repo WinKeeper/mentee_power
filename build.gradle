@@ -63,11 +63,11 @@ checkstyle {
     configFile = file("${rootDir}/config/checkstyle/checkstyle.xml") // раскомментируй эту строку
 }
 
-// ! пока не работает Checkstyle.xml сделаю фильтрацию по одному файлу
-checkstyleMain {
-    source = sourceSets.main.java
-    include 'ru/mentee/power/devtools/student/StudentList.java'
-}
+// фильтрацию по одному файлу
+//checkstyleMain {
+//    source = sourceSets.main.java
+//    include 'ru/mentee/power/devtools/student/StudentList.java'
+//}
 
 // Создавал в other вместо verification
 tasks.withType(Checkstyle) {
@@ -95,6 +95,11 @@ jacocoTestCoverageVerification {
     dependsOn jacocoTestReport
     violationRules {
         rule {
+//            можно исключить определённые пути при проверке
+//            excludes = [
+//                    '**/ProgressDemo*'
+//            ]
+
             limit {
                 minimum = 0.80  // 80% покрытия инструкций
             }

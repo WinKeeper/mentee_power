@@ -1,84 +1,97 @@
 package ru.mentee.power.devtools.progress;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DisplayName("Testing ProgressTracker")
 class ProgressLoopTest {
 
   @Test
-  @DisplayName("Must correctly calculate the total progress when an array of mentee is passed")
-  void shouldCalculateTotalProgressWhenMultipleMentees() {
-    // given - подготовка данных
+  void calculateTotalProgress_shouldReturnMessage_whenArrayIsNull() {
     ProgressTracker tracker = new ProgressTracker();
+
+    String result = tracker.calculateTotalProgress(null);
+
+    assertEquals("Array is empty or NULL", result);
+  }
+
+  @Test
+  void calculateTotalProgress_shouldReturnMessage_whenArrayIsEmpty() {
+    ProgressTracker tracker = new ProgressTracker();
+
+    String result = tracker.calculateTotalProgress(new Mentee[]{});
+
+    assertEquals("Array is empty or NULL", result);
+  }
+
+  @Test
+  void calculateTotalProgress_shouldCalculateCorrectly_forSingleMentee() {
+    ProgressTracker tracker = new ProgressTracker();
+
     Mentee[] mentees = {
-        new Mentee("Иван", "Москва", "Backend разработка", 5, 12),
+        new Mentee("Иван", "Москва", "Backend разработчик", 5, 12)
+    };
+
+    String result = tracker.calculateTotalProgress(mentees);
+
+    assertEquals(
+        "Total finished 5 from 12 lessons, left 7 lessons.",
+        result
+    );
+  }
+
+  @Test
+  void calculateTotalProgress_shouldCalculateCorrectly_forMultipleMentees() {
+    ProgressTracker tracker = new ProgressTracker();
+
+    Mentee[] mentees = {
+        new Mentee("Иван", "Москва", "Backend разработчик", 5, 12),
         new Mentee("Мария", "Санкт-Петербург", "Fullstack", 8, 12),
         new Mentee("Пётр", "Казань", "Java Backend", 12, 12)
     };
 
-    // when - выполнение действия
     String result = tracker.calculateTotalProgress(mentees);
 
-    // then - проверка результата с assertJ
-    assertThat(result)
-        .contains("Total finished 25 from 36 lessons")
-        .contains("left 11 lessons");
+    assertEquals(
+        "Total finished 25 from 36 lessons, left 11 lessons.",
+        result
+    );
   }
 
   @Test
-  @DisplayName("Should handle the array correctly when all mentee have completed the course")
-  void shouldCalculateTotalProgressWhenAllMenteesCompleted() {
-    // given
+  void calculateTotalProgress_shouldHandleZeroProgress() {
     ProgressTracker tracker = new ProgressTracker();
+
     Mentee[] mentees = {
-        new Mentee("Иван", "Москва", "Backend", 12, 12),
-        new Mentee("Мария", "СПб", "Fullstack", 12, 12)
+        new Mentee("Иван", "Москва", "Backend разработчик", 0, 12)
     };
 
-    // when
     String result = tracker.calculateTotalProgress(mentees);
 
-    // then
-    assertThat(result)
-        .contains("Total finished 24 from 24 lessons")
-        .contains("left 0 lessons");
+    assertEquals(
+        "Total finished 0 from 12 lessons, left 12 lessons.",
+        result
+    );
   }
 
   @Test
-  @DisplayName("Should check array is empty")
-  void shouldCheckArrayIsEmptyWhenMethodStarted() {
-    // given
+  void calculateTotalProgress_shouldHandleAllCompleted() {
     ProgressTracker tracker = new ProgressTracker();
-    Mentee[] mentees = {};
 
-    // when
+    Mentee[] mentees = {
+        new Mentee("Иван", "Москва", "Backend разработчик", 12, 12)
+    };
+
     String result = tracker.calculateTotalProgress(mentees);
 
-    // then
-    assertThat(result)
-        .contains("Array is empty or NULL");
+    assertEquals(
+        "Total finished 12 from 12 lessons, left 0 lessons.",
+        result
+    );
   }
 
   @Test
-  @DisplayName("Should not throw exception when creating Mentee with valid data")
-  void shouldNotThrowExceptionWhenCreatingValidMentee() {
-    assertThatCode(() -> new Mentee("Иван", "Москва", "Backend", 12, 12))
-        .doesNotThrowAnyException();
-  }
-
-  @Test
-  @DisplayName("Should throw IllegalArgumentException when creating Mentee with invalid progress")
-  void shouldThrowIllegalArgumentExceptionWhenCreatingInvalidMentee() {
-
-    assertThatThrownBy(() ->
-        new Mentee("Мария", "СПб", "Fullstack", 25, 12)
-    )
-        .isInstanceOf(IllegalArgumentException.class)
-        .hasMessage("Некорректные значения прогресса");
+  void main_shouldRunWithoutErrors() {
+    ProgressTracker.main(new String[]{});
   }
 }

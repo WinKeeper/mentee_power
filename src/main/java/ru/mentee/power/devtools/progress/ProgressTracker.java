@@ -7,7 +7,10 @@ public class ProgressTracker {
       return "Array is empty or NULL";
     }
 
-    int totalCompleted = 0, totalTotal = 0, index = 0, totalRemaining;
+    int totalCompleted = 0;
+    int totalTotal = 0;
+    int index = 0;
+    int totalRemaining;
 
     while (index < mentees.length) {
       totalCompleted += mentees[index].completedLessons();
@@ -17,7 +20,8 @@ public class ProgressTracker {
 
     totalRemaining = totalTotal - totalCompleted;
 
-    return String.format("Total finished %d from %d lessons, left %d lessons.", totalCompleted, totalTotal, totalRemaining);
+    return String.format("Total finished %d from %d lessons, left %d lessons.",
+        totalCompleted, totalTotal, totalRemaining);
 
     // throw new UnsupportedOperationException("Метод calculateTotalProgress ещё не реализован");
   }

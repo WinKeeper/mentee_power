@@ -1,31 +1,36 @@
 package ru.mentee.power;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MenteeProgressTest {
 
   @Test
-  void shouldFormatSummaryWhenProgressCreated() {
-    MenteeProgress progress = new MenteeProgress("Ирина", 1, 8);
+  void summaryReturnsFormattedString() {
+    MenteeProgress progress = new MenteeProgress("Nikita", 1, 6);
+    assertEquals("Sprint 1 -> Nikita: planned 6 h", progress.summary());
+  }
 
-    String result = progress.summary();
-
-    assertThat(result).isEqualTo("Sprint 1 -> Ирина: planned 8 h");
+  @ParameterizedTest
+  @CsvSource({
+      "0, false",
+      "2, false",
+      "3, true",
+      "5, true"
+  })
+  void readyForSprintDependsOnHours(int hours, boolean expected) {
+    MenteeProgress progress = new MenteeProgress("Test", 1, hours);
+    assertEquals(expected, progress.readyForSprint());
   }
 
   @Test
-  void shouldDetectReadinessWhenHoursAboveThreshold() {
-    MenteeProgress progress = new MenteeProgress("Ирина", 1, 4);
+  void recordsWithSameValuesAreEqual() {
+    MenteeProgress p1 = new MenteeProgress("Nikita", 1, 6);
+    MenteeProgress p2 = new MenteeProgress("Nikita", 1, 6);
 
-    assertThat(progress.readyForSprint()).isTrue();
-  }
-
-  @Test
-  void shouldDetectLackOfReadinessWhenHoursBelowThreshold() {
-    MenteeProgress progress = new MenteeProgress("Ирина", 1, 2);
-
-    assertThat(progress.readyForSprint()).isFalse();
+    assertEquals(p1, p2);
   }
 }
