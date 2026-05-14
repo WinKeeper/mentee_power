@@ -63,12 +63,6 @@ checkstyle {
     configFile = file("${rootDir}/config/checkstyle/checkstyle.xml") // раскомментируй эту строку
 }
 
-// фильтрацию по одному файлу
-//checkstyleMain {
-//    source = sourceSets.main.java
-//    include 'ru/mentee/power/devtools/student/StudentList.java'
-//}
-
 // Создавал в other вместо verification
 tasks.withType(Checkstyle) {
     group = 'verification'

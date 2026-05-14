@@ -1,17 +1,17 @@
 package ru.mentee.power.devtools.student;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
 class StudentListTest {
 
   @Test
-  void addStudent_shouldAddStudent_whenNotNull() {
+  void addStudentShouldAddStudentWhenNotNull() {
     StudentList studentList = new StudentList();
     Student student = new Student("John", "Berlin");
 
@@ -23,7 +23,7 @@ class StudentListTest {
   }
 
   @Test
-  void addStudent_shouldNotAddStudent_whenNull() {
+  void addStudentShouldNotAddStudentWhenNull() {
     StudentList studentList = new StudentList();
 
     studentList.addStudent(null);
@@ -32,7 +32,7 @@ class StudentListTest {
   }
 
   @Test
-  void getStudentFromSpecificCity_shouldReturnCorrectStudents() {
+  void getStudentFromSpecificCityShouldReturnCorrectStudents() {
     StudentList studentList = new StudentList();
 
     Student s1 = new Student("Alice", "Berlin");
@@ -52,7 +52,7 @@ class StudentListTest {
   }
 
   @Test
-  void getStudentFromSpecificCity_shouldReturnEmpty_whenNoMatches() {
+  void getStudentFromSpecificCityShouldReturnEmptyWhenNoMatches() {
     StudentList studentList = new StudentList();
     studentList.addStudent(new Student("Alice", "Berlin"));
 
@@ -62,14 +62,14 @@ class StudentListTest {
   }
 
   @Test
-  void getStudentFromSpecificCity_shouldReturnEmpty_whenListIsEmpty() {
+  void getStudentFromSpecificCityShouldReturnEmptyWhenListIsEmpty() {
     StudentList studentList = new StudentList();
 
     assertTrue(studentList.getStudentFromSpecificCity("Berlin").isEmpty());
   }
 
   @Test
-  void getStudentFromSpecificCity_shouldBeCaseSensitive() {
+  void getStudentFromSpecificCityShouldBeCaseSensitive() {
     StudentList studentList = new StudentList();
     studentList.addStudent(new Student("Alice", "Berlin"));
 
