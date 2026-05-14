@@ -23,18 +23,18 @@ jobs:
           distribution: 'temurin'
           java-version: '25'
           cache: 'gradle'
-
+          
       - name: Run Checkstyle (Main and Test)
-        run: gradlew.bat --no-daemon checkstyleMain checkstyleTest
-        
+        run: .\gradlew.bat --no-daemon checkstyleMain checkstyleTest
+
       - name: Run tests
-        run: gradlew.bat --no-daemon test
+        run: .\gradlew.bat --no-daemon test
 
       - name: Generate JaCoCo report
-        run: gradlew.bat --no-daemon jacocoTestReport
+        run: .\gradlew.bat --no-daemon jacocoTestReport
 
       - name: Verify code coverage
-        run: gradlew.bat --no-daemon jacocoTestCoverageVerification
+        run: .\gradlew.bat --no-daemon jacocoTestCoverageVerification
 
       - name: Build project
-        run: gradlew.bat --no-daemon build
+        run: .\gradlew.bat --no-daemon build
