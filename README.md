@@ -1,6 +1,6 @@
 # Devtools
 
-[![CI](https://github.com/WinKeeper/devtools/actions/workflows/ci.yml/badge.svg)](https://github.com/WinKeeper/devtools/actions)
+[![Style and test](https://github.com/WinKeeper/devtools/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/WinKeeper/devtools/actions/workflows/ci.yml)
 
 # DVT-2 — Gradle-проект и базовый main
 
