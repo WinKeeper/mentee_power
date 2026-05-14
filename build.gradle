@@ -101,11 +101,6 @@ jacocoTestCoverageVerification {
     }
 }
 
-// Исключил тесты из checkstyle
-tasks.named('checkstyleTest') {
-    enabled = false
-}
-
 // Интеграция проверок в lifecycle
 check {
     dependsOn jacocoTestCoverageVerification

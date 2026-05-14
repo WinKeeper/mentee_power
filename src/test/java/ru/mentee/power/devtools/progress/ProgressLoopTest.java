@@ -1,13 +1,13 @@
 package ru.mentee.power.devtools.progress;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class ProgressLoopTest {
 
   @Test
-  void calculateTotalProgress_shouldReturnMessage_whenArrayIsNull() {
+  void calculateTotalProgressShouldReturnMessageWhenArrayIsNull() {
     ProgressTracker tracker = new ProgressTracker();
 
     String result = tracker.calculateTotalProgress(null);
@@ -16,7 +16,7 @@ class ProgressLoopTest {
   }
 
   @Test
-  void calculateTotalProgress_shouldReturnMessage_whenArrayIsEmpty() {
+  void calculateTotalProgressShouldReturnMessageWhenArrayIsEmpty() {
     ProgressTracker tracker = new ProgressTracker();
 
     String result = tracker.calculateTotalProgress(new Mentee[]{});
@@ -25,7 +25,7 @@ class ProgressLoopTest {
   }
 
   @Test
-  void calculateTotalProgress_shouldCalculateCorrectly_forSingleMentee() {
+  void calculateTotalProgressShouldCalculateCorrectlyForSingleMentee() {
     ProgressTracker tracker = new ProgressTracker();
 
     Mentee[] mentees = {
@@ -41,7 +41,7 @@ class ProgressLoopTest {
   }
 
   @Test
-  void calculateTotalProgress_shouldCalculateCorrectly_forMultipleMentees() {
+  void calculateTotalProgressShouldCalculateCorrectlyForMultipleMentees() {
     ProgressTracker tracker = new ProgressTracker();
 
     Mentee[] mentees = {
@@ -59,7 +59,7 @@ class ProgressLoopTest {
   }
 
   @Test
-  void calculateTotalProgress_shouldHandleZeroProgress() {
+  void calculateTotalProgressShouldHandleZeroProgress() {
     ProgressTracker tracker = new ProgressTracker();
 
     Mentee[] mentees = {
@@ -75,7 +75,7 @@ class ProgressLoopTest {
   }
 
   @Test
-  void calculateTotalProgress_shouldHandleAllCompleted() {
+  void calculateTotalProgressShouldHandleAllCompleted() {
     ProgressTracker tracker = new ProgressTracker();
 
     Mentee[] mentees = {
@@ -91,7 +91,7 @@ class ProgressLoopTest {
   }
 
   @Test
-  void main_shouldRunWithoutErrors() {
+  void mainShouldRunWithoutErrors() {
     ProgressTracker.main(new String[]{});
   }
 }
