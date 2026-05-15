@@ -22,8 +22,7 @@ public class ProgressTracker {
 
     return String.format("Total finished %d from %d lessons, left %d lessons.",
         totalCompleted, totalTotal, totalRemaining);
-
-    // throw new UnsupportedOperationException("Метод calculateTotalProgress ещё не реализован");
+    
   }
 
   public static void main(String[] args) {

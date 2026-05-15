@@ -1,4 +1,4 @@
-name: Style and test
+name: Java CI
 
 on:
   push:
