@@ -547,9 +547,9 @@ public static void main(String[] args) {
 - **Пример** — конкретное применение в коде/команде/документации
 - **Источник** — ссылка на официальную документацию
 
----
-
 ### Категория: Java-экосистема
+
+---
 
 #### JDK — Java Development Kit
 
@@ -568,54 +568,259 @@ File → Project Structure → Project → SDK → выбираем JDK 25.
 
 #### JRE — Java Runtime Environment
 
-**Определение:** [заполните сами]
+**Определение:** Software environment in which Java programs run. Includes the implementation of the Java Virtual
+Machine (JVM) and core libraries required for execution.
 
-**Контекст использования:** [заполните сами]
+**Контекст использования:** JRE используется для запуска Java-приложений без необходимости компиляции. Достаточно
+установить JRE, если требуется только выполнение программ.
 
-**Пример:** [заполните сами]
+**Пример:** Для запуска готового приложения выполняем java -jar app.jar, при этом используется установленная JRE.
 
-**Источник:** [URL]
+**Источник:** https://docs.oracle.com/cd/E19455-01/806-3461/6jck06gqd/index.html
 
 ---
 
-JDK, JRE, JVM, Gradle Wrapper, Build Tool, Dependency, Artifact
-[... добавьте минимум 15 терминов следующим образом ...]
+#### Gradle Wrapper
+
+**Определение:** The Gradle Wrapper is a script (called gradlew or gradlew.bat) that invokes a declared version of
+Gradle, downloading it beforehand if necessary.
+
+**Контекст использования:** Gradle Wrapper гарантирует, что все разработчики и CI используют одну и ту же версию Gradle
+без ручной установки.
+
+**Пример:** Вместо gradle build используем `./gradlew build`. Использование `./gradlew build` вместо gradle build
+обеспечивает автоматическое использование (и при необходимости — загрузку) именно той версии Gradle, которая объявлена в
+проекте.
+
+**Источник:** https://docs.oracle.com/javase/specs/jvms/se25/html/index.html
+
+---
+
+#### Build Tool
+
+**Определение:** A build tool automates the process of building software, including compiling, testing, and packaging
+code.
+
+**Контекст использования:** Build tool (например, Gradle) управляет жизненным циклом проекта: сборкой, тестированием и
+публикацией.
+
+**Пример:** Команда gradle build компилирует код, запускает тесты и создает JAR-файл.
+
+**Источник:** https://docs.gradle.org/current/userguide/building_java_projects.html
+
+---
+
+#### Dependency
+
+**Определение:** A dependency is a pointer to another piece of software required to build, test, or run a module.
+
+**Определение:** A dependency is a library that your project requires to build, test, and run. (maven)
+
+**Контекст использования:** Зависимости подключаются через build tool и автоматически загружаются из репозиториев (
+например, Maven Central). В Gradle зависимости объявляются внутри блока dependencies { } с указанием таких атрибутов,
+как group, name и version, что позволяет инструменту находить и загружать их из объявленных репозиториев.
+
+**Пример:** `implementation("org.springframework:spring-core:6.0.0")`
+
+**Источник:** https://docs.gradle.org/current/userguide/building_java_projects.html
+
+**Источник:** https://maven.apache.org/guides/introduction/introduction-to-dependencies.html
+
+---
+
+#### Artifact
+
+**Определение:** An artifact is a file, typically a JAR, that is produced by a build and stored in a repository.
+
+**Контекст использования:** Артефакты публикуются в репозитории и используются другими проектами как зависимости.
+
+**Пример:** После сборки создаётся build/libs/app.jar — это build artifact.
+
+**Источник:** https://docs.gradle.org/current/userguide/building_java_projects.html
+
+---
 
 ### Категория: Инструменты разработки
 
-#### Git — Git
+---
 
-**Определение:** [заполните сами]
+#### IDE — Integrated Development Environment
 
-**Контекст использования:** [заполните сами]
+**Определение:** An integrated development environment (IDE) is a software application that provides comprehensive
+facilities to programmers for software development.
 
-**Пример:** [заполните сами]
+**Контекст использования:** IDE объединяет редактор кода, компилятор, отладчик и инструменты навигации по проекту в
+одном интерфейсе.
 
-**Источник:** [URL]
+**Пример:** В IntelliJ IDEA можно писать код, запускать приложение и отлаживать его в одном окне.
 
-IDE, SDK, Git, Repository, Commit, Branch, Pull Request, Checkstyle, Debug, Breakpoint
+**Источник:** https://www.jetbrains.com/help/idea/discover-intellij-idea.html
+
+---
+
+#### SDK — Software Development Kit
+
+**Определение:** A software development kit (SDK) is a collection of software tools and libraries used to develop
+applications for a specific platform.
+
+**Контекст использования:** SDK включает компиляторы, библиотеки и утилиты, необходимые для разработки под конкретную
+платформу.
+
+**Пример:** JDK является SDK для разработки Java-приложений.
+
+**Источник:** https://docs.oracle.com/iaas/Content/API/Concepts/sdks.ht
+
+---
+
+#### Git - Git
+
+**Определение:** Git is a distributed version control system for tracking changes in source code during software
+development.
+
+**Контекст использования:** Git используется для управления версиями кода, совместной работы и отслеживания изменений.
+
+**Пример:** Команда `git status` показывает текущие изменения в проекте.
+
+**Источник:** https://git-scm.com/docs/git
+
+---
+
+#### Репозиторий - Repository
+
+**Определение:** A repository is a data structure that stores metadata for a set of files or directory structure.
+
+**Контекст использования:** Репозиторий хранит историю изменений проекта и все его версии.
+
+**Пример:** `git clone <url>` копирует удалённый репозиторий на локальную машину.
+
+**Источник:** https://git-scm.com/docs/gitglossary
+
+---
+
+#### Коммит - Commit
+
+**Определение:** A commit is a snapshot of the repository at a specific point in time.
+
+**Контекст использования:** Коммиты фиксируют изменения в проекте и формируют историю разработки.
+
+**Пример:** `git commit -m "fix: correct validation logic"`
+
+**Источник:** https://git-scm.com/docs/git-commit
+
+---
+
+#### Ветка - Branch
+
+**Определение:** A branch is a parallel version of a repository.
+
+**Контекст использования:** Ветки позволяют разрабатывать новые фичи независимо от основной версии кода.
+
+**Пример:** `git checkout -b feature/login`
+
+**Источник:** https://git-scm.com/docs/git-branch
+
+---
+
+#### Пулл реквест - Pull Request
+
+**Определение:** A pull request is a method of submitting contributions to a repository.
+
+**Контекст использования:** Pull request используется для обсуждения и проверки изменений перед их слиянием в основную
+ветку.
+
+**Пример:** Создание PR в GitHub для merge ветки `feature/login` в `main`.
+
+**Источник:** https://docs.github.com/en/pull-requests
+
+---
+
+#### Проверка стиля - Checkstyle
+
+**Определение:** Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.
+
+**Контекст использования:** Checkstyle проверяет код на соответствие стилю и правилам форматирования.
+
+**Пример:** Проверка кода выполняется автоматически при сборке проекта через Gradle.
+
+**Источник:** https://checkstyle.sourceforge.io/#Overview
+
+---
+
+#### Дебаг - Debug
+
+**Определение:** Debugging is the process of identifying and removing errors from software.
+
+**Контекст использования:** Отладка используется для поиска и исправления ошибок в программе во время выполнения.
+
+**Пример:** Запуск приложения в режиме Debug в IDE позволяет пошагово выполнять код.
+
+**Источник:** https://www.jetbrains.com/help/idea/debugging-code.html
+
+---
+
+#### Breakpoint - Breakpoint
+
+**Определение:** A breakpoint is a marker used to pause program execution at a specified point.
+
+**Контекст использования:** Breakpoint позволяет остановить выполнение программы для анализа состояния переменных.
+
+**Пример:** Установка breakpoint в IDE и запуск Debug для остановки на нужной строке кода.
+
+**Источник:** https://www.jetbrains.com/help/idea/using-breakpoints.html
 
 ---
 
 ### Категория: Процессы и практики
 
-#### Code Review — Code Review
+---
 
-**Определение:** [заполните сами]
+#### Code Review
 
-**Контекст использования:** [заполните сами]
+**Определение:** Code review is the systematic examination of source code by developers to identify mistakes and improve
+code quality.
 
-**Пример:** [заполните сами]
+**Контекст использования:** Code review используется перед слиянием изменений для повышения качества кода и соблюдения
+стандартов команды.
 
-**Источник:** [URL]
+**Пример:** Перед merge создаётся Pull Request, где другие разработчики оставляют комментарии и предлагают улучшения.
 
-Code Review, CI/CD, Runbook
+**Источник:
+** https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/code-reviewing-changes-in-pull-requests
+
+---
+
+#### CI/CD — Continuous Integration / Continuous Delivery
+
+**Определение:** Continuous Integration is a software development practice where developers integrate code into a shared
+repository frequently, and Continuous Delivery automates the release of validated code to a repository.
+
+**Контекст использования:** CI/CD автоматизирует сборку, тестирование и доставку приложения, снижая риск ошибок при
+релизе.
+
+**Пример:** При каждом push GitHub Actions запускает build и тесты проекта.
+
+**Источник:** https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration
+
+---
+
+#### Runbook
+
+**Определение:** A runbook is a set of documented procedures for performing routine operations and troubleshooting
+tasks.
+
+**Контекст использования:** Runbook используется для стандартизации операций и быстрого реагирования на инциденты.
+
+**Пример:** Runbook описывает шаги перезапуска сервиса при падении и команды для проверки логов.
+
+**Источник:** https://learn.microsoft.com/en-us/azure/architecture/framework/devops/automation/runbooks
 
 ---
 
 ## Вопросы по сложным терминам
 
-### Вопрос 1: [Название сложного термина]
+### Шаблон вопроса
+
+**Вопрос n:** [Название сложного термина]
 
 **Задача:** [что нужно уточнить/понять про термин]
 
@@ -629,16 +834,42 @@ Code Review, CI/CD, Runbook
 
 ---
 
-### Вопрос 2: [Название сложного термина]
+### Вопрос 1: Artifact
 
-**Задача:** [что нужно уточнить/понять про термин]
+**Задача:** Понять, что именно считается artifact в контексте Java/Gradle-проекта и чем он отличается от просто файлов
+проекта.
 
-**Контекст:** [какие материалы изучили, где встретили термин]
+**Контекст:** В заданиях требовались артефакты, но не до конца ясно, речь о JAR-файлах, результатах сборки или любых
+выходных файлах.
 
-**Ограничения:** [что уже попробовали]
+**Ограничения:** Изучено определение из Gradle Docs, но остаётся неясность в практическом применении (что именно сдавать
+как artifact).
 
-**Ожидаемый результат:** [чёткое понимание термина и его применения]
+**Ожидаемый результат:** Чёткое понимание, что artifact — это результат сборки (например, JAR), который можно
+использовать, распространять или подключать как dependency.
 
-**Критерии успеха:** [как проверить, что термин понят правильно]
+**Критерии успеха:** Могу однозначно определить artifact в проекте (например, build/libs/app.jar) и объяснить, почему
+именно он является артефактом, а исходный код — нет.
+
+---
+
+### Вопрос 2: Technical Architecture
+
+**Задача:** Понять, что включает в себя technical architecture и чем она отличается от общей архитектуры системы (system
+architecture).
+
+**Контекст:** Термин встречается в документации (например, Oracle Docs) и описывает структуру приложений и их
+компонентов на уровне технологий и реализации.
+
+**Ограничения:** Изучены определения и описания, но остаётся неясность в границах термина (что именно входит: только
+технологии или также взаимодействие компонентов).
+
+**Ожидаемый результат:** Чёткое понимание, что technical architecture описывает структуру системы с точки зрения
+технологий, компонентов, их взаимодействия и инфраструктуры.
+
+**Критерии успеха:** Могу объяснить technical architecture на примере проекта (например: backend на Java, сборка через
+Gradle, взаимодействие через REST API) и отличить её от бизнес-архитектуры.
+
+---
 
 ## Дополнительные материалы
